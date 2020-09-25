@@ -1,14 +1,6 @@
-def even(a):
-    if a % 2 == 0:
-        return 1
-    else:
-        return 0
-
+def calc(a):
+    return [a * 4, a * a, (a*a + a*a)**(1/2)]
 
 a = int(input())
 
-if even(a):
-    print("Even")
-else:
-    print("Not even")
-
+print(calc(a))
