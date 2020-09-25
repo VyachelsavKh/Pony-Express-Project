@@ -1,6 +1,4 @@
-def calc(a):
-    return [a * 4, a * a, (a*a + a*a)**(1/2)]
+def ret(a):
+    return [a[0], a[-1]]
 
-a = int(input())
-
-print(calc(a))
+print(ret([1,2,3,4,5]))
