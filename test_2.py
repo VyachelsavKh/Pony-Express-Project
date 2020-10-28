@@ -11,6 +11,9 @@ def test_2():
 
     if identifiers == 'Wrong identifiers':
         log_output.Print('Тест 2 не пройден')
+        waitings.visual_checking()
+        driver.close()
+        return
 
     result = main_page.quit(driver)
 

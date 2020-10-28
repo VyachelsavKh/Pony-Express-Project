@@ -13,5 +13,6 @@ def transitioning():
 def visual_checking():
     time.sleep(paths.visual_check_time)
 
+
 if __name__ == '__main__':
     print('Файл содержит функции ожидания')

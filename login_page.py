@@ -8,7 +8,16 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 def driver_init():
-    driver = webdriver.Chrome(paths.driver_path)
+    driver = 'ERROR'
+
+    if paths.browser == 'Chrome':
+        driver = webdriver.Chrome(paths.driver_path)
+    if paths.browser == 'Firefox':
+        driver = webdriver.Firefox(executable_path = paths.driver_path)
+
+    if driver == 'ERROR':
+        return 'ERROR'
+
     driver.get(paths.pegas_url)
 
     try:

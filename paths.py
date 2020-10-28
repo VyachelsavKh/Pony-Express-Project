@@ -1,5 +1,6 @@
 pegas_url = 'http://pegasus-edu.pegasus.ponyex.local/'
-driver_path = r'./chromedriver.exe'
+browser = 'Firefox' # 'Chrome'
+driver_path = r'./firefoxdriver.exe' # r'./chromedriver.exe'
 pegas_title = 'Пегас'
 
 correct_enter_login = 'ext.mgu_education'
@@ -8,8 +9,8 @@ correct_enter_password = 'rg#P5hZm4F'
 wrong_enter_login = 'wrong_login'
 wrong_enter_password = 'wrong_password'
 
-search_time = 1
-transition_time = 1
+search_time = 5
+transition_time = 5
 visual_check_time = 5
 
 print_to_output_to_file = 1
@@ -17,6 +18,7 @@ print_to_output_to_file = 1
 if __name__ == "__main__":
     print("Файл содержит пути и константы:")
     print('pegas_url - путь к сайт')
+    print('browser - какой браузер используем')
     print('driver_path - путь к драйверу')
     print('pegas_title - название по которому определяем сайт')
     print('myLogin - правильный логин на сайте')

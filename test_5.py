@@ -11,6 +11,9 @@ def test_5():
 
     if identifiers == 'Wrong identifiers':
         log_output.Print('Тест 5 не пройден')
+        waitings.visual_checking()
+        driver.close()
+        return
 
     result = service_menu.editing_user_groups_button(driver)
 

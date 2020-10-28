@@ -11,16 +11,25 @@ def test_6():
 
     if identifiers == 'Wrong identifiers':
         log_output.Print('Тест 6 не пройден')
+        waitings.visual_checking()
+        driver.close()
+        return
 
     result = editing_user_groups.create_group(driver)
 
     if result == 'ERROR':
         log_output.Print('Тест 6 не пройден')
+        waitings.visual_checking()
+        driver.close()
+        return
 
     result = editing_user_groups.check_for_a_single_group_with_a_similar_name(driver, result)
 
     if result == 'ERROR':
         log_output.Print('Тест 6 не пройден')
+        waitings.visual_checking()
+        driver.close()
+        return
 
     result = editing_user_groups.delete_first_groop(driver)
 

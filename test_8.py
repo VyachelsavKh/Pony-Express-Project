@@ -11,6 +11,11 @@ def test_8():
 
     if identifiers == 'Wrong identifiers':
         log_output.Print('Тест 8 не пройден')
+        waitings.visual_checking()
+        driver.close()
+        driver.switch_to_window(driver.window_handles[0])
+        driver.close()
+        return
 
     result = arrived_at_the_warehouse_no_sorting.check_menu(driver)
 

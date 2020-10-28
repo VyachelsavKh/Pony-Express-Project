@@ -41,8 +41,6 @@ def arrived_at_the_warehouse_without_sorting_button(driver):
 def continue_without_courier_button(driver):
     result = arrived_at_the_warehouse_without_sorting_button(driver)
 
-    waitings.transitioning()
-
     if result == 'ERROR':
         return 'ERROR'
 
