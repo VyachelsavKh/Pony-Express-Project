@@ -13,7 +13,7 @@ def check_menu(driver):
         return 'ERROR'
 
     try:
-        element_menu_name_button = WebDriverWait(driver, 5).until(
+        element_menu_name_button = WebDriverWait(driver, paths.search_time).until(
             EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/section/section[2]/section/section/div[1]/h1")))
     except:
         log_output.Print('Не нашёл название меню')

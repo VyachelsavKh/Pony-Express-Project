@@ -6,6 +6,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def create_group(driver):
+    if driver == 'ERROR':
+        return 'ERROR'
+
     result = service_menu.editing_user_groups_button(driver)
 
     if result == 'ERROR':
@@ -53,6 +56,9 @@ def create_group(driver):
 
 
 def check_for_a_single_group_with_a_similar_name(driver, name):
+    if driver == 'ERROR':
+        return 'ERROR'
+
     try:
         element_find_groop_element = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.XPATH,"/html/body/div[1]/section/section[2]/section/section/div/div/div[1]/div[2]/div/div/div/input")))
@@ -79,6 +85,9 @@ def check_for_a_single_group_with_a_similar_name(driver, name):
     return 'SUCCESS'
 
 def delete_first_groop(driver):
+    if driver == 'ERROR':
+        return 'ERROR'
+
     try:
         element_put_a_tick_button = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.XPATH,

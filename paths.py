@@ -1,30 +1,16 @@
-pegas_url = 'http://pegasus-edu.pegasus.ponyex.local/'
-browser = 'Firefox' # 'Chrome'
-driver_path = r'./firefoxdriver.exe' # r'./chromedriver.exe'
-pegas_title = 'Пегас'
+pegas_url = 'http://pegasus-edu.pegasus.ponyex.local/' # путь к сайту
+browser = 'Firefox' # 'Chrome' # какой браузер используем
+driver_path = r'./firefoxdriver.exe' # r'./chromedriver.exe' # путь к драйверу
+pegas_title = 'Пегас' # название по которому определяем сайт
 
-correct_enter_login = 'ext.mgu_education'
-correct_enter_password = 'rg#P5hZm4F'
+correct_enter_login = 'ext.mgu_education' # правильный логин на сайте
+correct_enter_password = 'rg#P5hZm4F' # правильный пароль на сайте
 
-wrong_enter_login = 'wrong_login'
-wrong_enter_password = 'wrong_password'
+wrong_enter_login = 'wrong_login' #
+wrong_enter_password = 'wrong_password' #
 
-search_time = 5
-transition_time = 5
-visual_check_time = 5
+search_time = 10 # время поиска элемента на странице
+transition_time = 5 # время на открытие новой страницы
+visual_check_time = 0 # время на визуальный контроль выполненных действий
 
-print_to_output_to_file = 1
-
-if __name__ == "__main__":
-    print("Файл содержит пути и константы:")
-    print('pegas_url - путь к сайт')
-    print('browser - какой браузер используем')
-    print('driver_path - путь к драйверу')
-    print('pegas_title - название по которому определяем сайт')
-    print('myLogin - правильный логин на сайте')
-    print('myPassword - правильный пароль на сайте')
-    print('search_time - время поиска элемента на странице')
-    print('transition_time - время открытия новой страницы')
-    print('visual_check_time - время на физуальный контроль выполненных действий')
-    print('print_to_output_to_file - в каком формате пистаь логи 1 - в файл и на экран, 0 - только экран')
-
+print_to_output_to_file = 1 #  каком формате пистаь логи 1 - в файл и на экран, 0 - только экран
