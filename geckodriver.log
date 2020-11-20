@@ -664,15 +664,24 @@ JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't fin
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
 1604065939878	Marionette	INFO	Listening on port 49537
 1604065940085	Marionette	WARN	TLS certificate errors will be ignored for this session
-1604066000282	geckodriver	INFO	Listening on 127.0.0.1:49599
-1604066003250	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\VYACHE~1\\AppData\\Local\\Temp\\rust_mozprofiletZmPx9"
+1604071855425	Marionette	INFO	Stopped listening on port 49537
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\VYACHE~1\\AppData\\Local\\Temp\\rust_mozprofiletZmPx9"
 Can't find symbol 'eglSwapBuffersWithDamageEXT'.
 JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
 1604066007340	Marionette	INFO	Listening on port 49607
 1604066007491	Marionette	WARN	TLS certificate errors will be ignored for this session
-1604066112134	geckodriver	INFO	Listening on 127.0.0.1:49673
-1604066115115	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\VYACHE~1\\AppData\\Local\\Temp\\rust_mozprofilewOs1Zf"
+1604071854022	Marionette	INFO	Stopped listening on port 49607
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+l\\Temp\\rust_mozprofilewOs1Zf"
 Can't find symbol 'eglSwapBuffersWithDamageEXT'.
 JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))

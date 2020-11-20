@@ -14,6 +14,5 @@ def Print(string):
     else:
         print(string)
 
-
 if __name__ == '__main__':
     print('Файл содержит средства записи логов')

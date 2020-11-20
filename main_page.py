@@ -49,7 +49,3 @@ def menu_button(driver):
     log_output.Print('Нажал кнопку меню')
 
     return 'SUCCESS'
-
-
-if __name__ == '__main__':
-    print('Файл содержит функции нажатия на кнопки на гланой странице')
