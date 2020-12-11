@@ -17,6 +17,7 @@ def request_1():
 
     if token == 'ERROR':
         log_output.Print('Тест 1 не пройден')
+        return
 
     log_output.Print('Отправил запрос на получение конфигурации бэкэнда')
 

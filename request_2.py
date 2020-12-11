@@ -19,6 +19,7 @@ def request_2():
 
     if token == 'ERROR':
         log_output.Print('Тест 2 не пройден')
+        return
 
     r2 = couriers_requests.get_courier_by_id(token, '359afb0c-b870-4610-9233-524db1d5a029')
 

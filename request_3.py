@@ -21,6 +21,7 @@ def request_3():
 
     if token == 'ERROR':
         log_output.Print('Тест 3 не пройден')
+        return
 
     log_output.Print('Отправил запрос на поиск 5 курьеров с параметром Максим')
 
@@ -28,6 +29,7 @@ def request_3():
 
     if r3 == 'ERROR':
         log_output.Print('Тест 3 не пройден')
+        return
 
     if r3['result']['count'] != 5:
         log_output.Print('Не нашёл 5 курьеров у которых один из параметров равен Максим')

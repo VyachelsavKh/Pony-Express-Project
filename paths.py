@@ -31,3 +31,5 @@ urls = [
     'http://warehouses-backend-edu.pegasus.ponyex.local/',      #12
     'http://waybills-backend-edu.pegasus.ponyex.local/'         #13
 ]
+
+#swagger_tail = 'api/manual/index.html'

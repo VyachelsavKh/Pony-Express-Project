@@ -22,6 +22,7 @@ def request_4():
 
     if token == 'ERROR':
         log_output.Print('Тест 4 не пройден')
+        return
 
     log_output.Print('Отправил запрос на получение всех параметров сотояний')
 
@@ -29,7 +30,7 @@ def request_4():
 
     if r4 == 'ERROR':
         log_output.Print('Тест 4 не пройден')
-
+        return
 
     code_list = r4['result']
 
@@ -41,15 +42,17 @@ def request_4():
     if len(now_codes) != len(right_codes):
         log_output.Print('Количество параметров состойний отличается от ожидаемого')
         log_output.Print('Тест 4 не пройден')
+        return
 
     log_output.Print('Количество параметров состойний не отличается от ожидаемого')
 
     for code in now_codes:
         if not code in right_codes:
+            log_output.Print('Параметры состойний отличаются от ожидаемого')
             log_output.Print('Тест 4 не пройден')
             return
 
-    log_output.Print('Параметры состойний не отличются от ожидаемого')
+    log_output.Print('Параметры состойний не отличаются от ожидаемого')
 
     log_output.Print('Тест 4 пройден')
 

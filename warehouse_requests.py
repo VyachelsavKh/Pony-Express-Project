@@ -1,6 +1,5 @@
 import get_request
 import json
-import log_output
 
 def get_condition_parameters(token):
     r = get_request.get_request(token, 12, '/api/v1/condition-parameters/get-all')

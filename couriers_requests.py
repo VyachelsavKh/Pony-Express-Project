@@ -5,7 +5,7 @@ import log_output
 def get_courier_by_id(token, courier_id):
     log_output.Print('Ищу курьера с id = ' + courier_id)
 
-    r = get_request.get_request(token, 1, f'/api/v1/couriers/get-courier-by-id/ {courier_id}', {'id': courier_id})
+    r = get_request.get_request(token, 1, f'/api/v1/couriers/get-courier-by-id/{courier_id}', {'id': courier_id})
 
     if r == 'ERROR':
         return 'ERROR'
