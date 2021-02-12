@@ -56,3 +56,57 @@ def check_colour(driver):
         return 'ERROR'
 
     return element_object_number.get_attribute('style')
+
+def check_error(driver):
+    if driver == 'ERROR':
+        return 'ERROR'
+
+    try:
+        element_error_message = WebDriverWait(driver, paths.search_time).until(
+            EC.visibility_of_element_located((By.XPATH, '/html/body/div[2]/div/div/span')))
+    except:
+        log_output.Print('Не найдено поле ошибки')
+        return 'ERROR'
+
+    return element_error_message.text
+
+def check_element_11_1111_1111(driver):
+    if driver == 'ERROR':
+        return 'ERROR'
+
+    try:
+        element_11_1111_1111 = WebDriverWait(driver, paths.search_time).until(
+            EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/section/section[2]/section/section/div[2]/div[4]/div[2]/div/div/div/div/div[2]/div[2]/div/div[2]/p')))
+    except:
+        log_output.Print('Не найдено поле с номером накладной')
+        return 'ERROR'
+
+    return element_11_1111_1111.text
+
+def delete_element_11_1111_1111(driver):
+    if driver == 'ERROR':
+        return 'ERROR'
+
+    try:
+        element_choose_button = WebDriverWait(driver, paths.search_time).until(
+            EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/section/section[2]/section/section/div[2]/div[4]/div[2]/div/div/div/div/div[2]/div[2]/div/div[1]/p")))
+    except:
+        log_output.Print('Не нашёл кнопки выбора накладной')
+        return 'ERROR'
+
+    element_choose_button.click()
+
+    log_output.Print('Выбрал накладную')
+
+    try:
+        element_delete_button = WebDriverWait(driver, paths.search_time).until(
+            EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/section/section[2]/section/section/div[2]/div[4]/div[2]/div/div/div/div/div[1]/div[1]/button[1]/span[2]')))
+    except:
+        log_output.Print('Не нашёл кнопки удаления')
+        return 'ERROR'
+
+    element_delete_button.click()
+
+    log_output.Print('Нажал кнопку удалить')
+
+    return 'SUCCESS'

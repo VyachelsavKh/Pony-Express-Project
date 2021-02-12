@@ -29,7 +29,7 @@ def arrived_at_the_warehouse_without_sorting_button(driver):
 
     try:
         element_without_courier_button = WebDriverWait(driver, paths.search_time).until(
-            EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div/div[1]/div[1]/button[2]/span")))
+            EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[1]/div[1]/button[2]")))
     except:
         log_output.Print('Попал в другое меню')
         return 'ERROR'
@@ -47,7 +47,7 @@ def continue_without_courier_button(driver):
     try:
         element_without_courier_button = WebDriverWait(driver, paths.search_time).until(
             EC.element_to_be_clickable(
-                (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div/div[1]/div[1]/button[2]/span")))
+                (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[1]/div[1]/button[2]")))
     except:
         log_output.Print('Не нашёл кнопку Без курьера')
         return 'ERROR'

@@ -77,7 +77,7 @@ def koch_(x, y, l, angle, count, angle2):
               l / 6 / cos(angle2), angle - angle2, count, angle2)
 
 if __name__ == "__main__":
-    serp(100, 100, 600, 3)
-    koch(20, 20, SIZE_X-20, 4, angle = 70)
+    serp(20, 20, 900, 7)
+    #koch(20, 20, SIZE_X-2*20, 4, angle = 71)
 
     r.mainloop()

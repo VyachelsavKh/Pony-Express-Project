@@ -7,7 +7,6 @@ import paths
 
 '''
 
-
 def request_14():
     log_output.Print('Тест 14')
 
