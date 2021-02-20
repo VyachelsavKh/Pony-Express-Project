@@ -3,6 +3,7 @@ import log_output
 import login_page
 import time
 import editing_user_groups
+import pytest
 
 '''
 Тест-кейс №6. Проверка права на создание группы пользователей и удаление её
@@ -33,52 +34,30 @@ import editing_user_groups
 '''
 
 def test_6():
-    log_output.Print('Тест 6')
     driver = login_page.login()
 
-    identifiers = login_page.check_enty(driver)
-
-    if identifiers == 'Wrong identifiers':
-        log_output.Print('Тест 6 не пройден')
-        waitings.visual_checking()
-        driver.close()
-        return
+    login_page.check_enty(driver)
 
     name = editing_user_groups.create_group(driver)
-
-    if name == 'ERROR':
-        log_output.Print('Тест 6 не пройден')
-        waitings.visual_checking()
-        driver.close()
-        return
 
     time.sleep(1)
 
     result = editing_user_groups.check_for_a_single_group_with_a_similar_name(driver, name)
 
     if result == 'ERROR':
-        log_output.Print('Тест 6 не пройден')
-        waitings.visual_checking()
         driver.close()
-        return
+        assert 0, 'Не смог найти созданную группу'
 
-    result = editing_user_groups.delete_first_groop(driver)
-
-    if result == 'ERROR':
-        log_output.Print('Тест 6 не пройден')
-        waitings.visual_checking()
-        driver.close()
-        return
+    editing_user_groups.delete_first_groop(driver)
 
     result = editing_user_groups.check_for_a_single_group_with_a_similar_name(driver, name)
 
-    if result == 'ERROR':
-        log_output.Print('Тест 6 пройден')
-    else:
-        log_output.Print('Тест 6 не пройден')
+    if result != 'ERROR':
+        driver.close()
+        assert 0, 'Группа не удалилась'
 
-    waitings.visual_checking()
     driver.close()
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     test_6()
+    print(1)

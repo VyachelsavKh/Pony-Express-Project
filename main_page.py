@@ -1,51 +1,38 @@
-import log_output
 import paths
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import allure
 
 def quit(driver):
-    if driver == 'ERROR':
-        return 'ERROR'
+    with allure.step('Нажатие кнопки выхода'):
+        try:
+            element_exit_button = WebDriverWait(driver, paths.search_time).until(
+                EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/section/section[1]/div/div/div[2]/div/button[2]')))
+        except:
+            driver.close()
+            assert 0, 'Не нашёл кнопку выхода'
 
-    try:
-        element_exit_button = element_menu_button = WebDriverWait(driver, paths.search_time).until(
-            EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/section/section[1]/div/div/div[2]/div/button[2]')))
-    except:
-        log_output.Print('Не нашёл кнопку выхода')
-        return 'ERROR'
+        element_exit_button.click()
 
-    element_exit_button.click()
+    with allure.step('Проверка выхода из системы'):
+        try:
+            WebDriverWait(driver, paths.search_time).until(
+                EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/section/form/input[1]')))
 
-    log_output.Print('Вышел из системы')
-
-    try:
-        element_login = WebDriverWait(driver, paths.search_time).until(
-            EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/section/form/input[1]')))
-
-        element_password = WebDriverWait(driver, paths.search_time).until(
-            EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/section/form/input[2]')))
-    except:
-        log_output.Print('Не вернулся на главную страницу')
-        return 'ERROR'
-
-    log_output.Print('Вернулся на главную страницу')
-    return 'SUCCESS'
-
+            WebDriverWait(driver, paths.search_time).until(
+                EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/section/form/input[2]')))
+        except:
+            driver.close()
+            assert 0, 'Не вернулся на главную страницу'
 
 def menu_button(driver):
-    if driver == 'ERROR':
-        return
+    with allure.step('Нажатие кнопки меню'):
+        try:
+            element_menu_button = WebDriverWait(driver, paths.search_time).until(
+                EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/section/section[1]/div/div/span/span/button')))
+        except:
+            driver.close()
+            assert 0, 'Не нашёл кнопку меню'
 
-    try:
-        element_menu_button = WebDriverWait(driver, paths.search_time).until(
-            EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/section/section[1]/div/div/span/span/button')))
-    except:
-        log_output.Print('Не нашёл кнопку меню')
-        return 'ERROR'
-
-    element_menu_button.click()
-
-    log_output.Print('Нажал кнопку меню')
-
-    return 'SUCCESS'
+        element_menu_button.click()
