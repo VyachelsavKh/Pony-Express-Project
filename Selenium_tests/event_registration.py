@@ -14,6 +14,9 @@ def arrived_at_the_warehouse_without_sorting_button(driver):
             element_no_sorting_button = WebDriverWait(driver, paths.search_time).until(
                 EC.element_to_be_clickable((By.XPATH,"/html/body/div[3]/div/div/div/div[2]/ul/li[1]/span/div/div/div/div/ul/li[1]/span/div/div[2]/div/div/ul/li[1]/a")))
         except:
+            driver.close()
+            driver.switch_to_window(driver.window_handles[0])
+            driver.close()
             assert 0, 'Не нашёл кнопку 71. Прибыл на склад(Без сортировки)'
 
         element_no_sorting_button.click()
