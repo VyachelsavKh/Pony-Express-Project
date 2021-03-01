@@ -18,3 +18,6 @@ def test_1():
     login_page.check_enty(driver)
 
     driver.close()
+
+if __name__ == '__main__':
+    test_1()

@@ -1,51 +1,62 @@
-import request_authorisation
-import event_71
+import login_page
+import arrived_at_the_warehouse_no_sorting
+import time
 import pytest
 
 '''
 Тест-кейс №12. Проверка ввода некорректного номера накладной в блок событий 71
-1) Войти в систему -
-    бот зашёл в систему
-2) Отправить запрос на создание блока событий 71 без курьера -
-    Блок был создан
-3) Отправить запрос на добавление накладной с номером "11-1111-1111" -
-    Накладная добавлена
-4) Отправить запрос на удаление добавленной накладной -
-    Накладная удалена
+1) В браузере открыть ссылку на вход с систему - 
+    Открылась страница «Вход в систему» с полями для ввода логина и пароля
+2) Ввести логин пользователя в поле для логина, пароль пользователя в поле для пароля и нажать кнопку «Войти» - 
+    Открылась «Главная страница» ПЕГАС 2.0 с кнопкой «Menu»
+3) Нажать кнопку «Menu» и выпавшем списке выбрать пункт 
+    «Производство» – «Регистрация событий» – «71. Прибыл на склад (без сортировки)» - 
+        Открылась форма «Ввод данных о блоке»
+4) Нажать кнопку «Продолжить без курьера» - 
+    Открылась форма «71. Прибыл на склад (без сортировки)» с номером созданного блока
+5) В поле ввода «Номер объекта» ввести текст «11-1111-1111» и нажать кнопку Enter - 
+    Номер накладной «11-1111-1111» добавлен в блок и отображается в таблице объектов
+6) В списке объектов выбрать введенный номер «11-1111-1111» и нажать кнопку удалить - 
+    Номер накладной «11-1111-1111» удалён из блока и не отображается в списке объектов
 '''
 
 def test_12():
-    token = request_authorisation.authorisation()
+    driver = login_page.login()
 
-    r = event_71.without_sorting_and_couriers(token)
+    time.sleep(0.5)
 
-    id_ = r['result']['id']
+    login_page.check_enty(driver)
 
-    assert id_ != None, 'Блок не был создан'
+    time.sleep(0.5)
 
-    number = "11-1111-1111"
+    arrived_at_the_warehouse_no_sorting.check_menu(driver)
 
-    r = event_71.add_object(token, id_, number)
+    number = '11-1111-1111'
 
-    assert r['result'] != None, 'Не смог добавить накладную с номером: ' + number
+    time.sleep(0.5)
 
-    waybill_id = r['result']['id']
+    arrived_at_the_warehouse_no_sorting.enter_object_number(driver, number)
 
-    r = event_71.find_object(token, id_)
+    time.sleep(0.5)
 
-    assert r['result'] != None, 'Не смог добавить найти добавленные накладные'
+    result = arrived_at_the_warehouse_no_sorting.check_element_11_1111_1111(driver)
 
-    find = 0
+    if result != number:
+        driver.close()
+        driver.switch_to_window(driver.window_handles[0])
+        driver.close()
+        assert 0, 'Накладная 11-1111-1111 не была добавлена'
 
-    for waybill in r['result']:
-        if waybill['id'] == waybill_id:
-            find = 1
+    time.sleep(0.5)
 
-    assert find, 'Не смог найти созданную накладную с номером'
+    arrived_at_the_warehouse_no_sorting.delete_element_11_1111_1111(driver)
 
-    event_71.delete_object(token, waybill_id)
+    time.sleep(0.5)
 
-    r = event_71.find_object(token, id_)
+    result = arrived_at_the_warehouse_no_sorting.check_element_11_1111_1111(driver)
 
-    for waybill in r['result']:
-        assert waybill['id'] == waybill_id, 'Накладная не была удалена'
+    driver.close()
+    driver.switch_to.window(driver.window_handles[0])
+    driver.close()
+
+    assert result != number, 'Накладная 11-1111-1111 не была удалена'

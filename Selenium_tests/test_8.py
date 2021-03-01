@@ -1,18 +1,32 @@
-import request_authorisation
-import event_71
+import login_page
+import arrived_at_the_warehouse_no_sorting
+import time
 import pytest
 
 '''
 Тест-кейс №8. Создание блока событий 71 без курьера
-1) Войти в систему -
-    бот зашёл в систему
-2) Отправить запрос на создание блока событий 71 без курьера -
-    Блок был создан
+1) В браузере открыть ссылку на вход с систему - 
+    Открылась страница «Вход в систему» с полями для ввода логина и пароля
+2) Ввести логин пользователя в поле для логина, пароль пользователя в поле для пароля и нажать кнопку «Войти» - 
+    Открылась «Главная страница» ПЕГАС 2.0 с кнопкой «Menu»
+3) Нажать кнопку «Menu» и выпавшем списке выбрать пункт 
+    «Производство» – «Регистрация событий» – «71. Прибыл на склад (без сортировки)» - 
+        Открылась форма «Ввод данных о блоке»
+4) Нажать кнопку «Продолжить без курьера» - 
+    Открылась форма «71. Прибыл на склад (без сортировки)» с номером созданного блока
 '''
 
 def test_8():
-    token = request_authorisation.authorisation()
+    driver = login_page.login()
 
-    r = event_71.without_sorting_and_couriers(token)
+    time.sleep(0.5)
 
-    assert r['result']['id'] != None, 'Блок не был создан'
+    login_page.check_enty(driver)
+
+    time.sleep(0.5)
+
+    arrived_at_the_warehouse_no_sorting.check_menu(driver)
+
+    driver.close()
+    driver.switch_to.window(driver.window_handles[0])
+    driver.close()
