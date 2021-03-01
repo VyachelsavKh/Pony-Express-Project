@@ -44,7 +44,10 @@ def continue_without_courier_button(driver):
                 EC.element_to_be_clickable(
                     (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[1]/div[1]/button[2]")))
         except:
-            assert 0, 'Не нашёл кнопку Без курьера'
+            driver.close()
+            driver.switch_to_window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не нашёл кнопку продолжить Без курьера'
 
         element_without_courier_button.click()
 
