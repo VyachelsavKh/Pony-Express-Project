@@ -1,5 +1,5 @@
 import main_page
-import paths
+import paths_s
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,7 +10,7 @@ def production_button(driver):
 
     with allure.step('Нажатие кнопки Производство'):
         try:
-            element_manufacture_button = WebDriverWait(driver, paths.search_time).until(
+            element_manufacture_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, ".bp3-submenu:nth-child(1) .bp3-text-overflow-ellipsis")))
         except:
             driver.close()
@@ -23,7 +23,7 @@ def event_registration_button(driver):
 
     with allure.step('Нажатие кнопки Регистрация событий'):
         try:
-            element_event_registration_button = WebDriverWait(driver, paths.search_time).until(
+            element_event_registration_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable(
                     (By.XPATH, "/html/body/div[3]/div/div/div/div[2]/ul/li[1]/span/div/div/div/div/ul/li[1]/span/span")))
         except:

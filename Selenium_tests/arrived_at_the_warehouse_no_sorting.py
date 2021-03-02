@@ -1,5 +1,5 @@
 import event_registration
-import paths
+import paths_s
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
@@ -11,7 +11,7 @@ def check_menu(driver):
 
     with allure.step('Проверка меню'):
         try:
-            element_menu_name_button = WebDriverWait(driver, paths.search_time).until(
+            element_menu_name_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/section/section[2]/section/section/div[1]/h1")))
         except:
             driver.close()
@@ -28,7 +28,7 @@ def check_menu(driver):
 def enter_object_number(driver, number):
     with allure.step('Ввод номера объекта'):
         try:
-            element_object_number = WebDriverWait(driver, paths.search_time).until(
+            element_object_number = WebDriverWait(driver, paths_s.search_time).until(
                 EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/section/section[2]/section/section/div[2]/div[3]/div[2]/div/div/div[3]/form/input')))
         except:
             driver.close()
@@ -42,7 +42,7 @@ def enter_object_number(driver, number):
 def check_error(driver):
     with allure.step('Проверка ошибки'):
         try:
-            element_error_message = WebDriverWait(driver, paths.search_time).until(
+            element_error_message = WebDriverWait(driver, paths_s.search_time).until(
                 EC.visibility_of_element_located((By.XPATH, '/html/body/div[2]/div/div/span')))
         except:
             driver.close()
@@ -55,7 +55,7 @@ def check_error(driver):
 def check_element_11_1111_1111(driver):
     with allure.step('Проверка наличия накладной'):
         try:
-            element_11_1111_1111 = WebDriverWait(driver, paths.search_time).until(
+            element_11_1111_1111 = WebDriverWait(driver, paths_s.search_time).until(
                 EC.visibility_of_element_located((By.XPATH, '/html/body/div[1]/section/section[2]/section/section/div[2]/div[4]/div[2]/div/div/div/div/div[2]/div[2]/div/div[2]/p')))
         except:
             return 'ERROR'
@@ -65,7 +65,7 @@ def check_element_11_1111_1111(driver):
 def delete_element_11_1111_1111(driver):
     with allure.step('Удаление накладной'):
         try:
-            element_choose_button = WebDriverWait(driver, paths.search_time).until(
+            element_choose_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.XPATH, "/html/body/div[1]/section/section[2]/section/section/div[2]/div[4]/div[2]/div/div/div/div/div[2]/div[2]/div/div[1]/p")))
         except:
             driver.close()
@@ -76,7 +76,7 @@ def delete_element_11_1111_1111(driver):
         element_choose_button.click()
 
         try:
-            element_delete_button = WebDriverWait(driver, paths.search_time).until(
+            element_delete_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/section/section[2]/section/section/div[2]/div[4]/div[2]/div/div/div/div/div[1]/div[1]/button[1]/span[2]')))
         except:
             driver.close()

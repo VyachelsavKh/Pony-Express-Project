@@ -1,5 +1,5 @@
 import main_page
-import paths
+import paths_s
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -10,7 +10,7 @@ def service_button(driver):
 
     with allure.step('Нажатие кнопки сервис'):
         try:
-            element_service_button = WebDriverWait(driver, paths.search_time).until(
+            element_service_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, ".bp3-submenu:nth-child(7) .bp3-text-overflow-ellipsis")))
         except:
             driver.close()
@@ -23,7 +23,7 @@ def permissions_management_button(driver):
 
     with allure.step('Нажатие кнопки Управление разрешениями'):
         try:
-            element_permissions_management_button = WebDriverWait(driver, paths.search_time).until(
+            element_permissions_management_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, ".bp3-popover-content:nth-child(1) .bp3-submenu:nth-child(1) .bp3-text-overflow-ellipsis")))
         except:
             driver.close()
@@ -36,7 +36,7 @@ def editing_user_groups_button(driver):
 
     with allure.step('Нажатие кнопки Группы пользователей'):
         try:
-            element_group_of_users_button = WebDriverWait(driver, paths.search_time).until(
+            element_group_of_users_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable(
                     (By.CSS_SELECTOR, "li:nth-child(1) > .bp3-menu-item > .bp3-text-overflow-ellipsis")))
         except:
@@ -47,7 +47,7 @@ def editing_user_groups_button(driver):
 
     with allure.step('Определение меню'):
         try:
-            element_editing_user_groups = WebDriverWait(driver, paths.search_time).until(
+            element_editing_user_groups = WebDriverWait(driver, paths_s.search_time).until(
                 EC.visibility_of_element_located((By.XPATH, "/html/body/div[1]/section/section[2]/section/div/h1")))
         except:
             driver.close()

@@ -1,6 +1,6 @@
 import production_menu
 import time
-import paths
+import paths_s
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,7 +11,7 @@ def arrived_at_the_warehouse_without_sorting_button(driver):
 
     with allure.step('Нажатие кнопки 71. Прибыл на склад(Без сортировки)'):
         try:
-            element_no_sorting_button = WebDriverWait(driver, paths.search_time).until(
+            element_no_sorting_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.XPATH,"/html/body/div[3]/div/div/div/div[2]/ul/li[1]/span/div/div/div/div/ul/li[1]/span/div/div[2]/div/div/ul/li[1]/a")))
         except:
             driver.close()
@@ -21,13 +21,13 @@ def arrived_at_the_warehouse_without_sorting_button(driver):
 
         element_no_sorting_button.click()
 
-    time.sleep(paths.transition_time)
+    time.sleep(paths_s.transition_time)
 
     driver.switch_to.window(driver.window_handles[1])
 
     with allure.step('Проверка меню'):
         try:
-            WebDriverWait(driver, paths.search_time).until(
+            WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[1]/div[1]/button[2]")))
         except:
             driver.close()
@@ -40,7 +40,7 @@ def continue_without_courier_button(driver):
 
     with allure.step('Нажатие кнопки продолжить без курьера'):
         try:
-            element_without_courier_button = WebDriverWait(driver, paths.search_time).until(
+            element_without_courier_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable(
                     (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/div/div/div[1]/div[1]/button[2]")))
         except:
@@ -56,7 +56,7 @@ def included_in_consolidation_button(driver):
 
     with allure.step('Нажатие кнопки 79. Включен в консолидацию'):
         try:
-            element_included_in_consolidation_button = WebDriverWait(driver, paths.search_time).until(
+            element_included_in_consolidation_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.XPATH,"/html/body/div[3]/div/div/div/div[2]/ul/li[1]/span/div/div/div/div/ul/li[1]/span/div/div[2]/div/div/ul/li[4]/a")))
         except:
             driver.close()
@@ -64,13 +64,13 @@ def included_in_consolidation_button(driver):
 
         element_included_in_consolidation_button.click()
 
-    time.sleep(paths.transition_time)
+    time.sleep(paths_s.transition_time)
 
     driver.switch_to.window(driver.window_handles[1])
 
     with allure.step('Проверка меню'):
         try:
-            element_menu_ident = WebDriverWait(driver, paths.search_time).until(
+            element_menu_ident = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable(
                     (By.XPATH, "/html/body/div[3]/div/div[2]/div/div[2]/form/div[1]/p")))
         except:

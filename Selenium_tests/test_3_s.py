@@ -1,5 +1,5 @@
 import login_page
-import paths
+import paths_s
 import time
 import pytest
 
@@ -12,7 +12,7 @@ import pytest
 '''
 
 def test_3():
-    driver = login_page.login(paths.wrong_enter_login, paths.wrong_enter_password)
+    driver = login_page.login(paths_s.wrong_enter_login, paths_s.wrong_enter_password)
 
     time.sleep(0.5)
 
