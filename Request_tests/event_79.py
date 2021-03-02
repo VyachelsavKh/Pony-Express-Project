@@ -8,7 +8,7 @@ def included_in_consolidation(token, destinationPointId):
     data = {"description":"","destinationPointId":destinationPointId}
 
     with allure.step('Создание блока событий - 79 включён в консолидацию'):
-        r = send_request.post_request(url, json=data, headers=headers)
+        r = send_request.post_request(url, json = data, headers = headers)
 
         return json.loads(r.text)
 

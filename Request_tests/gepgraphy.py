@@ -8,7 +8,7 @@ def get_by_id(token, id_):
     data = {'id': id_}
 
     with allure.step('Поиск адреса объекта по id объекта'):
-        r = send_request.get_request(url, headers=headers, params=data)
+        r = send_request.get_request(url, headers = headers, params = data)
 
         return json.loads(r.text)
 
@@ -18,7 +18,7 @@ def get_polygon_by_address_id(token, id_):
     data = {'id': id_}
 
     with allure.step('Поиск полигона адреса объекта по id объекта'):
-        r = send_request.get_request(url, headers=headers, params=data)
+        r = send_request.get_request(url, headers = headers, params = data)
 
         return json.loads(r.text)
 
@@ -29,6 +29,6 @@ def get_polygon_with_coordinates_by_address_id(token, id_, number):
             'waybillNumber' : number}
 
     with allure.step('Поиск координат полигона адреса объекта по id объекта'):
-        r = send_request.get_request(url, headers=headers, params=data)
+        r = send_request.get_request(url, headers = headers, params = data)
 
         return json.loads(r.text)
