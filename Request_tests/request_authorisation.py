@@ -1,16 +1,16 @@
 import json
-import paths_s
+import paths_r
 import send_request
 import requests
 import allure
 
 def authorisation(wrong = False):
-    login = paths_s.correct_enter_login
-    password = paths_s.correct_enter_password
+    login = paths_r.correct_enter_login
+    password = paths_r.correct_enter_password
 
     if wrong:
-        login = paths_s.wrong_enter_login
-        password = paths_s.wrong_enter_password
+        login = paths_r.wrong_enter_login
+        password = paths_r.wrong_enter_password
 
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     data = {'username': login,
