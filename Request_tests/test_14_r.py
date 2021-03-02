@@ -1,6 +1,6 @@
 import request_authorisation
 import event_79
-import paths
+import paths_s
 import pytest
 
 '''
@@ -16,7 +16,7 @@ import pytest
 def test_14():
     token = request_authorisation.authorisation()
 
-    destinationPointId = paths.destinationPointId_1202
+    destinationPointId = paths_s.destinationPointId_1202
 
     r = event_79.included_in_consolidation(token, destinationPointId)
 
