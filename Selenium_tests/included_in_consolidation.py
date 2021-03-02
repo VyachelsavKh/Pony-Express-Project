@@ -20,7 +20,13 @@ def choose_destination_button(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Выбрать'
 
-        element_choose_button.click()
+        try:
+            element_choose_button.click()
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Выбрать'
 
 def input_dote_name(driver, name):
     choose_destination_button(driver)
@@ -37,7 +43,13 @@ def input_dote_name(driver, name):
             driver.close()
             assert 0, 'Не нашёл поле поиска'
 
-        element_search_field.send_keys(name)
+        try:
+            element_search_field.send_keys(name)
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог нажать на поле поиска'
 
 def choose_the_first_group(driver):
     with allure.step('Выделение 1 точки назначения'):
@@ -50,7 +62,13 @@ def choose_the_first_group(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку выделения 1 точки назначения'
 
-        element_first_group_button.click()
+        try:
+            element_first_group_button.click()
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог выделить точка назначения'
 
     with allure.step('Нажатие кнопки добавить'):
         try:
@@ -62,7 +80,13 @@ def choose_the_first_group(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Добавить'
 
-        element_add_button.click()
+        try:
+            element_add_button.click()
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Добавить'
 
 def continue_button(driver):
     with allure.step('Нажатие кнопки далее'):
@@ -75,7 +99,13 @@ def continue_button(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Далее'
 
-        element_continue_button.click()
+        try:
+            element_continue_button.click()
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог нажать кнопку далее'
 
 def check_menu(driver):
     try:
@@ -101,8 +131,11 @@ def enter_object_number(driver, name):
             driver.close()
             assert 0, 'Не найдено поле ввода номера объекта'
 
-        element_object_number.send_keys(name)
-        element_object_number.send_keys(Keys.RETURN)
+        try:
+            element_object_number.send_keys(name)
+            element_object_number.send_keys(Keys.RETURN)
+        except:
+            assert 0, 'Не смог ввести номер объекта'
 
 def check_colour(driver):
     with allure.step('Проверка цвета рамки'):
@@ -114,8 +147,13 @@ def check_colour(driver):
             driver.switch_to.window(driver.window_handles[0])
             driver.close()
             assert 0, 'Не найдено поле ввода номера объекта'
-
-        return element_object_number.get_attribute('style')
+        try:
+            return element_object_number.get_attribute('style')
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог получить цвет рамки'
 
 def full_screen_button(driver):
     with allure.step('Переход в полноэкранный режим'):
@@ -123,9 +161,15 @@ def full_screen_button(driver):
             element_full_screen_button = WebDriverWait(driver, paths_s.search_time).until(
                 EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/section/section[2]/section/section/div[2]/div[3]/div[2]/div/div/div[1]/div/button/span[2]')))
         except:
-            assert 0, 'Не нашёл кнопку Полноэкранного режима'
+            assert 0, 'Не нашёл кнопку Полноэкранный режим'
 
-        element_full_screen_button.click()
+        try:
+            element_full_screen_button.click()
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Полноэкранный режим'
 
 def enter_object_name_full_screen(driver, name):
     with allure.step('Ввод номера объекта'):
@@ -138,8 +182,14 @@ def enter_object_name_full_screen(driver, name):
             driver.close()
             assert 0, 'Не найдено поле ввода номера объекта'
 
-        element_object_number.send_keys(name)
-        element_object_number.send_keys(Keys.RETURN)
+        try:
+            element_object_number.send_keys(name)
+            element_object_number.send_keys(Keys.RETURN)
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог ввести номер объекта'
 
 def check_colour_full_screen(driver):
     with allure.step('Проверка цвета рамки'):
@@ -151,5 +201,10 @@ def check_colour_full_screen(driver):
                 driver.switch_to.window(driver.window_handles[0])
                 driver.close()
                 assert 0, 'Не найдено поле ввода номера объекта'
-
-        return element_object_number.get_attribute('style')
+        try:
+            return element_object_number.get_attribute('style')
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог получить цвет рамки'

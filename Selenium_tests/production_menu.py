@@ -16,7 +16,11 @@ def production_button(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Производство'
 
-        element_manufacture_button.click()
+        try:
+            element_manufacture_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Производство'
 
 def event_registration_button(driver):
     production_button(driver)
@@ -30,4 +34,8 @@ def event_registration_button(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Регистрация событий'
 
-        element_event_registration_button.click()
+        try:
+            element_event_registration_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Регистрация событий'

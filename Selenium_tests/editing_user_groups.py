@@ -17,7 +17,11 @@ def create_group(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Создать новую'
 
-        element_create_new_button.click()
+        try:
+            element_create_new_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Создать новую'
 
     with allure.step('Ввод названия группы'):
         try:
@@ -31,7 +35,11 @@ def create_group(driver):
         date = datetime.datetime.now()
         name = date.strftime('%Y.%d.%m,%H.%M.%S.test_groop')
 
-        element_groop_name.send_keys(name)
+        try:
+            element_groop_name.send_keys(name)
+        except:
+            driver.close()
+            assert 0, 'Не смог ввести название группы'
 
     with allure.step('Сохранение группы'):
         try:
@@ -42,7 +50,11 @@ def create_group(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Сохранить'
 
-        element_save_groop_button.click()
+        try:
+            element_save_groop_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Сохранить'
 
     return name
 
@@ -56,7 +68,11 @@ def check_for_a_single_group_with_a_similar_name(driver, name):
             driver.close()
             assert 0, 'Не нашёл строки поиска группы'
 
-        element_find_groop_element.send_keys(name)
+        try:
+            element_find_groop_element.send_keys(name)
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать на поле поиска группы'
 
         try:
             element_my_groop = WebDriverWait(driver, 5).until(
@@ -79,7 +95,11 @@ def delete_first_groop(driver):
             driver.close()
             assert 0, 'Не нашёл поля для выделения группы'
 
-        element_put_a_tick_button.click()
+        try:
+            element_put_a_tick_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог выделить группу'
 
         try:
             element_delete_groop_button = WebDriverWait(driver, 5).until(
@@ -89,7 +109,11 @@ def delete_first_groop(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Удалить группу'
 
-        element_delete_groop_button.click()
+        try:
+            element_delete_groop_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Удалить группу'
 
         try:
             element_delete_button = WebDriverWait(driver, 5).until(
@@ -98,4 +122,8 @@ def delete_first_groop(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Удалить'
 
-        element_delete_button.click()
+        try:
+            element_delete_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Удалить'

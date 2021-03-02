@@ -25,7 +25,7 @@ def test_10():
 
     login_page.check_enty(driver)
 
-    time.sleep(0.5)
+    time.sleep(1)
 
     arrived_at_the_warehouse_no_sorting.check_menu(driver)
 

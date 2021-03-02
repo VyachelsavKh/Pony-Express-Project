@@ -16,7 +16,11 @@ def service_button(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Сервис'
 
-        element_service_button.click()
+        try:
+            element_service_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Сервис'
 
 def permissions_management_button(driver):
     service_button(driver)
@@ -29,7 +33,11 @@ def permissions_management_button(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Управление разрешениями'
 
-        element_permissions_management_button.click()
+        try:
+            element_permissions_management_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Управление разрешениями'
 
 def editing_user_groups_button(driver):
     permissions_management_button(driver)
@@ -43,7 +51,11 @@ def editing_user_groups_button(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку Группы пользователей'
 
-        element_group_of_users_button.click()
+        try:
+            element_group_of_users_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Группы пользователей'
 
     with allure.step('Определение меню'):
         try:

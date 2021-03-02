@@ -36,8 +36,11 @@ def enter_object_number(driver, number):
             driver.close()
             assert 0, 'Не найдено поле ввода номера объекта'
 
-        element_object_number.send_keys(number)
-        element_object_number.send_keys(Keys.RETURN)
+        try:
+            element_object_number.send_keys(number)
+            element_object_number.send_keys(Keys.RETURN)
+        except:
+            assert 0, 'Не смог ввести номер объекта'
 
 def check_error(driver):
     with allure.step('Проверка ошибки'):
@@ -73,7 +76,13 @@ def delete_element_11_1111_1111(driver):
             driver.close()
             assert 0, 'Не нашёл кнопки выбора накладной'
 
-        element_choose_button.click()
+        try:
+            element_choose_button.click()
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не смог нажать кнопку вбора накладной'
 
         try:
             element_delete_button = WebDriverWait(driver, paths_s.search_time).until(
@@ -84,4 +93,10 @@ def delete_element_11_1111_1111(driver):
             driver.close()
             assert 0, 'Не нашёл кнопки удаления'
 
-        element_delete_button.click()
+        try:
+            element_delete_button.click()
+        except:
+            driver.close()
+            driver.switch_to.window(driver.window_handles[0])
+            driver.close()
+            assert 0, 'Не нашёл кнопки удаления'

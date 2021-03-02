@@ -13,7 +13,11 @@ def quit(driver):
             driver.close()
             assert 0, 'Не нашёл кнопку выхода'
 
-        element_exit_button.click()
+        try:
+            element_exit_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку выход'
 
     with allure.step('Проверка выхода из системы'):
         try:
@@ -33,6 +37,10 @@ def menu_button(driver):
                 EC.element_to_be_clickable((By.XPATH, '/html/body/div[1]/section/section[1]/div/div/span/span/button')))
         except:
             driver.close()
-            assert 0, 'Не нашёл кнопку меню'
+            assert 0, 'Не нашёл кнопку Меню'
 
-        element_menu_button.click()
+        try:
+            element_menu_button.click()
+        except:
+            driver.close()
+            assert 0, 'Не смог нажать кнопку Меню'
