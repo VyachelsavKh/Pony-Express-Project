@@ -17,7 +17,11 @@ def driver_init():
         assert driver != 'ERROR', 'Не смог найти драйвер для работы с браузером'
 
     with allure.step('Открытие сайта'):
-        driver.get(paths.pegas_url)
+        try:
+            driver.get(paths.pegas_url)
+        except:
+            driver.close()
+            assert 0, 'Не смог открыть сайт'
 
         try:
             WebDriverWait(driver, paths.search_time).until(EC.title_is(paths.pegas_title))
